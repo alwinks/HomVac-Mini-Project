@@ -1,0 +1,21 @@
+<div class="form-group">
+                        <label class="col-sm-12">Vaccinator</label>
+                        <div class="col-sm-12 border-bottom">
+                            <select required name="vaccinator_id" class="form-select shadow-none ps-0 border-0 form-control-line">
+                                <option disabled selected>Choose vaccinator</option>
+                                <?php
+                                include('../config.php');
+                                $sql = "SELECT vaccinator_id,vaccinator_name FROM tbl_vaccinator";
+                                $result = mysqli_query($conn, $sql);
+                                if (mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        echo "<option value='" . $row['vaccinator_id'] . "'>" . $row['vaccinator_name'] . "</option>";
+                                    }
+                                } else {
+                                    echo "0 results";
+                                }
+                                mysqli_close($conn);
+                                ?>
+                            </select>
+                        </div>
+                    </div>
