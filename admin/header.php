@@ -82,9 +82,6 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="vaccines.php" aria-expanded="false">
                                 <span class="hide-menu">Vaccines</span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="account.php" aria-expanded="false">
-                                <span class="hide-menu">Account</span></a>
-                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="vaccinators.php" aria-expanded="false">
                                 <span class="hide-menu">Vaccinators</span></a>
                         </li>

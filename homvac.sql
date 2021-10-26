@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 24, 2021 at 04:17 PM
+-- Generation Time: Oct 26, 2021 at 02:41 PM
 -- Server version: 1.0.421
 -- PHP Version: 5.2.6
 
@@ -175,8 +175,8 @@ CREATE TABLE `tbl_vaccinator` (
 --
 
 INSERT INTO `tbl_vaccinator` (`vaccinator_id`, `place_id`, `vaccinator_name`, `vaccinator_mobile`, `vaccinator_password`, `vaccinator_status`) VALUES
-(1, 1, 'Antonio Moreno', '8765432109', '4dD$4dD$', 'Active'),
-(2, 6, 'Hanna Moos', '6543210987', '5eE%5eE%', 'Active');
+(1, 1, 'Antonio Moreno', '8765432109', '4dD$4dD$', 'Verified'),
+(2, 6, 'Hanna Moos', '6543210987', '5eE%5eE%', 'Verified');
 
 -- --------------------------------------------------------
 

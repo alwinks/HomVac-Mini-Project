@@ -19,10 +19,7 @@ include("header.php");
     <div class="col-sm-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Vaccinators</h4>
-                <div class="col-sm-12 d-flex">
-                    <a href="vaccinator_add.php" class="btn btn-success text-white">Add vaccinator</a>
-                </div>
+                <h4 class="card-title">Non-verified Vaccinators</h4>
                 <div class="table-responsive">
                     <table class="table user-table">
                         <thead>
@@ -34,15 +31,45 @@ include("header.php");
                         <tbody>
                             <?php
                             include('../config.php');
-                            $sql = "SELECT * FROM tbl_vaccinator";
+                            $sql = "SELECT * FROM tbl_vaccinator WHERE vaccinator_status='Non-verified'";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     echo "<tr><td>" . $row['vaccinator_name'] . "</td>";
                                     echo "<td>";
-                                    echo "<a href='vaccinator_update.php?vaccinator_id=" . $row['vaccinator_id'] . "'>Update</a>&emsp;";
-                                    echo "<a href='vaccinator_delete.php?vaccinator_id=" . $row['vaccinator_id'] . "'>Delete</a>";
+                                    echo "<a href='vaccinator_update.php?vaccinator_id=" . $row['vaccinator_id'] . "'>Update as Verified Vaccinator</a>&emsp;";
                                     echo "</td></tr>";
+                                }
+                            } else {
+                                echo "0 results";
+                            }
+                            mysqli_close($conn);
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Verified Vaccinators</h4>
+                <div class="table-responsive">
+                    <table class="table user-table">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0">Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            include('../config.php');
+                            $sql = "SELECT * FROM tbl_vaccinator WHERE vaccinator_status='Verified'";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<tr><td>" . $row['vaccinator_name'] . "</td></tr>";
                                 }
                             } else {
                                 echo "0 results";

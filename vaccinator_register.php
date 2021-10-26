@@ -5,7 +5,7 @@ if (isset($_POST['vaccinator_register'])) {
   $vaccinator_name = $_POST['vaccinator_name'];
   $vaccinator_mobile = $_POST['vaccinator_mobile'];
   $vaccinator_password = $_POST['vaccinator_password'];
-  $sql = "INSERT INTO tbl_vaccinator (place_id,vaccinator_name,vaccinator_mobile,vaccinator_password,vaccinator_status) VALUES ($place_id,'$vaccinator_name','$vaccinator_mobile','$vaccinator_password','Active')";
+  $sql = "INSERT INTO tbl_vaccinator (place_id,vaccinator_name,vaccinator_mobile,vaccinator_password,vaccinator_status) VALUES ($place_id,'$vaccinator_name','$vaccinator_mobile','$vaccinator_password','Non-verified')";
   if (mysqli_query($conn, $sql)) {
     header("location: vaccinator_login.php");
     echo "<script>alert('Registered successfully!');</script>";
