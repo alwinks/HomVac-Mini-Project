@@ -55,9 +55,7 @@
                     <ul class="navbar-nav">
                         <!-- User profile and search -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Markarn Doe
-                            </a>
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $_SESSION['admin_username']; ?></a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>
@@ -84,6 +82,9 @@
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="vaccinators.php" aria-expanded="false">
                                 <span class="hide-menu">Vaccinators</span></a>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="vaccinations.php" aria-expanded="false">
+                                <span class="hide-menu">Vaccinations</span></a>
                         </li>
                     </ul>
                 </nav>

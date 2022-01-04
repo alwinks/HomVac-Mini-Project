@@ -68,8 +68,6 @@ include("header.php");
                     while ($row = mysqli_fetch_assoc($result)) {
                       echo "<option value='" . $row['place_id'] . "'>" . $row['place_name'] . "</option>";
                     }
-                  } else {
-                    echo "0 results";
                   }
                   mysqli_close($conn);
                   ?>

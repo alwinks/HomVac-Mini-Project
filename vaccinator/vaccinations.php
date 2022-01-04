@@ -38,17 +38,17 @@ include("header.php");
                             <?php
                             include('../config.php');
                             $vaccinator_id = $_SESSION['vaccinator_id'];
-                            $sql = "SELECT tbl_vaccination.vaccination_id,tbl_vaccination.vaccination_date,tbl_vaccination.vaccination_time,tbl_member.member_name,tbl_member.member_dob,tbl_member.member_proof_photo,tbl_vaccine.vaccine_age,tbl_vaccine.vaccine_name,tbl_user.user_name,tbl_user.user_house,tbl_user.user_landmark,tbl_place.place_name FROM tbl_vaccination INNER JOIN tbl_member ON tbl_vaccination.member_id=tbl_member.member_id INNER JOIN tbl_vaccine ON tbl_vaccination.vaccine_id=tbl_vaccine.vaccine_id INNER JOIN tbl_user ON tbl_vaccination.user_id=tbl_user.user_id INNER JOIN tbl_place ON tbl_vaccination.place_id=tbl_place.place_id WHERE vaccinator_id='$vaccinator_id' AND vaccination_status='Vaccinated'";
+                            $sql = "SELECT * FROM tbl_vaccination INNER JOIN tbl_member ON tbl_vaccination.member_id=tbl_member.member_id INNER JOIN tbl_vaccine ON tbl_vaccination.vaccine_id=tbl_vaccine.vaccine_id INNER JOIN tbl_user ON tbl_vaccination.user_id=tbl_user.user_id INNER JOIN tbl_place ON tbl_vaccination.place_id=tbl_place.place_id WHERE vaccinator_id='$vaccinator_id' AND vaccination_status='Vaccinated'";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    echo "<td>" . $row['vaccination_date'] . "</td>";
-                                    echo "<td>" . $row['vaccination_time'] . "</td>";
+                                    echo "<td>" . date("d-m-Y", strtotime($row['vaccinated_date'])) . "</td>";
+                                    echo "<td>" . date("h:i A", strtotime($row['vaccinated_time'])) . "</td>";
                                     echo "<td>" . $row['member_name'] . "</td>";
                                     echo "<td>" . $row['vaccine_age'] . "</td>";
                                     echo "<td>" . $row['vaccine_name'] . "</td>";
-                                    echo "<td>" . $row['member_dob'] . "</td>";
-                                    echo "<td><img src='../images/" . $row['member_proof_photo'] . "' height=250px></td>";
+                                    echo "<td>" . date("d-m-Y", strtotime($row['member_dob'])) . "</td>";
+                                    echo "<td><img src='../assets/images/" . $row['member_proof_photo'] . "' height=250px></td>";
                                     echo "<td>" . $row['user_name'] . "<br>" . $row['user_house'] . "<br>" . $row['user_landmark'] . "<br>" . $row['place_name'] . "</td></tr>";
                                 }
                             } else {

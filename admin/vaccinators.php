@@ -25,20 +25,24 @@ include("header.php");
                         <thead>
                             <tr>
                                 <th class="border-top-0">Name</th>
+                                <th class="border-top-0">Place</th>
+                                <th class="border-top-0">Mobile</th>
                                 <th class="border-top-0">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             include('../config.php');
-                            $sql = "SELECT * FROM tbl_vaccinator WHERE vaccinator_status='Non-verified'";
+                            $sql = "SELECT * FROM tbl_vaccinator INNER JOIN tbl_place ON tbl_vaccinator.place_id=tbl_place.place_id WHERE vaccinator_status='Non-verified'";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     echo "<tr><td>" . $row['vaccinator_name'] . "</td>";
-                                    echo "<td>";
-                                    echo "<a href='vaccinator_update.php?vaccinator_id=" . $row['vaccinator_id'] . "'>Update as Verified Vaccinator</a>&emsp;";
-                                    echo "</td></tr>";
+                                    echo "<td>" . $row['place_name'] . "</td>";
+                                    echo "<td>" . $row['vaccinator_mobile'] . "</td>";
+                                    echo "<td>"; ?>
+                                    <a href="vaccinator_verify.php?vaccinator_id=<?php echo $row['vaccinator_id']; ?>" onclick="return confirm('Are you sure to verify <?php echo $row['vaccinator_name']; ?>?')">Verify</a>
+                            <?php echo "</td></tr>";
                                 }
                             } else {
                                 echo "0 results";
@@ -60,16 +64,20 @@ include("header.php");
                         <thead>
                             <tr>
                                 <th class="border-top-0">Name</th>
+                                <th class="border-top-0">Place</th>
+                                <th class="border-top-0">Mobile</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             include('../config.php');
-                            $sql = "SELECT * FROM tbl_vaccinator WHERE vaccinator_status='Verified'";
+                            $sql = "SELECT * FROM tbl_vaccinator INNER JOIN tbl_place ON tbl_vaccinator.place_id=tbl_place.place_id WHERE vaccinator_status='Verified'";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    echo "<tr><td>" . $row['vaccinator_name'] . "</td></tr>";
+                                    echo "<tr><td>" . $row['vaccinator_name'] . "</td>";
+                                    echo "<td>" . $row['place_name'] . "</td>";
+                                    echo "<td>" . $row['vaccinator_mobile'] . "</td></tr>";
                                 }
                             } else {
                                 echo "0 results";

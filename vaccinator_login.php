@@ -4,7 +4,7 @@ include('config.php');
 if (isset($_POST['vaccinator_login'])) {
     $vaccinator_mobile = $_POST['vaccinator_mobile'];
     $vaccinator_password = $_POST['vaccinator_password'];
-    $sql = "SELECT vaccinator_id,vaccinator_name FROM tbl_vaccinator WHERE vaccinator_mobile='$vaccinator_mobile' AND vaccinator_password='$vaccinator_password'";
+    $sql = "SELECT * FROM tbl_vaccinator WHERE vaccinator_mobile='$vaccinator_mobile' AND vaccinator_password='$vaccinator_password'";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         echo '<script>alert("Logged in successfully!");</script>';

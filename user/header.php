@@ -77,14 +77,14 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php" aria-expanded="false">
                                 <span class="hide-menu">Home</span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="family.php" aria-expanded="false">
-                                <span class="hide-menu">Family Members</span></a>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="account.php" aria-expanded="false">
+                                <span class="hide-menu">Account</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="vaccinations.php" aria-expanded="false">
                                 <span class="hide-menu">Vaccinations</span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="account.php" aria-expanded="false">
-                                <span class="hide-menu">Account</span></a>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="family.php" aria-expanded="false">
+                                <span class="hide-menu">Family Members</span></a>
                         </li>
                     </ul>
                 </nav>

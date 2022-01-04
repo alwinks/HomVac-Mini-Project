@@ -19,10 +19,62 @@ include("header.php");
     <div class="col-sm-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Vaccines</h4>
-                <div class="col-sm-12 d-flex">
-                    <a href="vaccine_add.php" class="btn btn-success text-white">Add Vaccine</a>
+                <div class="d-flex align-items-center">
+                    <h4 class="card-title">Vaccines</h4>
+                    <button class="ms-auto btn btn-sm btn-rounded btn-success" data-bs-toggle="modal" data-bs-target="#myModal">
+                        Add Vaccine
+                    </button>
                 </div>
+                <div class="modal fade" id="myModal" tabindex="-1" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header d-flex">
+                                <h4 class="modal-title">Add Vaccine</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <?php
+                            include('../config.php');
+                            if (isset($_POST['vaccine_add'])) {
+                                $vaccine_age = $_POST['vaccine_age'];
+                                $vaccine_name = $_POST['vaccine_name'];
+                                $sql = "INSERT INTO tbl_vaccine (vaccine_age,vaccine_name,vaccine_status) VALUES ('$vaccine_age','$vaccine_name','Active')";
+                                if (mysqli_query($conn, $sql)) {
+                                    echo "<script>alert('Vaccine added successfully!');</script>";
+                                } else {
+                                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                                }
+                            }
+                            ?>
+                            <div class="modal-body">
+                                <form method="POST" action="<?php $_PHP_SELF ?>">
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Vaccine Age</label>
+                                        <div class="col-md-12">
+                                            <input required name="vaccine_age" type="text" placeholder="Enter new vaccine age" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Vaccine Name</label>
+                                        <div class="col-md-12">
+                                            <input required name="vaccine_name" type="text" placeholder="Enter new vaccine name" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <button name="vaccine_add" type="submit" class="btn btn-success">
+                                            Add Vaccine
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
                 <div class="table-responsive">
                     <table class="table user-table">
                         <thead>

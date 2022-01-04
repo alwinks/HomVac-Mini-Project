@@ -4,7 +4,7 @@ include('config.php');
 if (isset($_POST['user_login'])) {
     $user_mobile = $_POST['user_mobile'];
     $user_password = $_POST['user_password'];
-    $sql = "SELECT user_id,user_name,place_id FROM tbl_user WHERE user_mobile='$user_mobile' AND user_password='$user_password'";
+    $sql = "SELECT * FROM tbl_user WHERE user_mobile='$user_mobile' AND user_password='$user_password'";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         header("location: user/index.php");

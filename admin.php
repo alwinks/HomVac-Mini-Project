@@ -4,12 +4,13 @@ include('config.php');
 if (isset($_POST['admin_login'])) {
     $admin_username = $_POST['admin_username'];
     $admin_password = $_POST['admin_password'];
-    $sql = "SELECT admin_id FROM tbl_admin WHERE admin_username='$admin_username' AND admin_password='$admin_password'";
+    $sql = "SELECT * FROM tbl_admin WHERE admin_username='$admin_username' AND admin_password='$admin_password'";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         header("location: admin/index.php");
         $row = mysqli_fetch_assoc($result);
         $_SESSION['admin_id'] = $row['admin_id'];
+        $_SESSION['admin_username'] = $row['admin_username'];
         echo '<script>alert("Logged in successfully!");</script>';
     } else {
         echo '<script>alert("Incorrect username or password!");</script>';

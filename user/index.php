@@ -12,12 +12,17 @@ if (isset($_POST['vaccination_book'])) {
     $vaccinator_id = $_POST['vaccinator_id'];
     $vaccination_date = $_POST['vaccination_date'];
     $vaccination_time = $_POST['vaccination_time'];
-    $sql = "INSERT INTO tbl_vaccination (user_id,place_id,member_id,vaccine_id,vaccinator_id,vaccination_date,vaccination_time,vaccination_status) VALUES ('$user_id','$place_id','$member_id','$vaccine_id','$vaccinator_id','$vaccination_date','$vaccination_time','Pending')";
-    if (mysqli_query($conn, $sql)) {
-        header("Location: index.php");
-        echo "<script>alert('Vaccination booked successfully!');</script>";
+    $sql1 = "SELECT * FROM tbl_vaccination WHERE vaccinator_id='$vaccinator_id' AND vaccination_date='$vaccination_date' AND vaccination_time='$vaccination_time'";
+    $result = mysqli_query($conn, $sql1);
+    if (mysqli_num_rows($result) == 0) {
+        $sql2 = "INSERT INTO tbl_vaccination (user_id,place_id,member_id,vaccine_id,vaccinator_id,vaccination_date,vaccination_time,vaccination_status) VALUES ('$user_id','$place_id','$member_id','$vaccine_id','$vaccinator_id','$vaccination_date','$vaccination_time','Pending')";
+        if (mysqli_query($conn, $sql2)) {
+            echo "<script>alert('Vaccination booked successfully!');</script>";
+        } else {
+            echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+        }
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "<script>alert('This schedule is already booked by someone else. Please change Vaccination Date OR Vaccination Time OR Vaccinator.');</script>";
     }
 }
 include("header.php");
@@ -52,8 +57,6 @@ include("header.php");
                                     while ($row = mysqli_fetch_assoc($result)) {
                                         echo "<option value='" . $row['member_id'] . "'>" . $row['member_name'] . "</option>";
                                     }
-                                } else {
-                                    echo "0 results";
                                 }
                                 mysqli_close($conn);
                                 ?>
@@ -73,8 +76,6 @@ include("header.php");
                                     while ($row = mysqli_fetch_assoc($result)) {
                                         echo "<option value='" . $row['vaccine_id'] . "'>" . $row['vaccine_age'] . " - " . $row['vaccine_name'] . "</option>";
                                     }
-                                } else {
-                                    echo "0 results";
                                 }
                                 mysqli_close($conn);
                                 ?>
@@ -107,16 +108,14 @@ include("header.php");
                                 <option disabled selected>Choose vaccinator</option>
                                 <?php
                                 include('../config.php');
-                                $sql = "SELECT vaccinator_id,vaccinator_name FROM tbl_vaccinator";
+                                $sql = "SELECT vaccinator_id,vaccinator_name FROM tbl_vaccinator WHERE vaccinator_status='Verified'";
                                 $result = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {
                                         echo "<option value='" . $row['vaccinator_id'] . "'>" . $row['vaccinator_name'] . "</option>";
                                     }
-                                } else {
-                                    echo "0 results";
-                                }
-                                mysqli_close($conn);
+                                } else
+                                    mysqli_close($conn);
                                 ?>
                             </select>
                         </div>

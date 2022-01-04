@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (!$_SESSION['user_id']) {
-    header("Location: ../index.php");
+if (!$_SESSION['admin_id']) {
+    header("Location: ../admin.php");
 }
 include("header.php");
 ?>
@@ -36,8 +36,7 @@ include("header.php");
                         <tbody>
                             <?php
                             include('../config.php');
-                            $user_id = $_SESSION['user_id'];
-                            $sql = "SELECT * FROM tbl_vaccination INNER JOIN tbl_member ON tbl_vaccination.member_id=tbl_member.member_id INNER JOIN tbl_user ON tbl_vaccination.user_id=tbl_user.user_id INNER JOIN tbl_vaccine ON tbl_vaccination.vaccine_id=tbl_vaccine.vaccine_id INNER JOIN tbl_vaccinator ON tbl_vaccination.vaccinator_id=tbl_vaccinator.vaccinator_id WHERE tbl_user.user_id='$user_id' AND vaccination_status='Pending'";
+                            $sql = "SELECT * FROM tbl_vaccination INNER JOIN tbl_member ON tbl_vaccination.member_id=tbl_member.member_id INNER JOIN tbl_user ON tbl_vaccination.user_id=tbl_user.user_id INNER JOIN tbl_vaccine ON tbl_vaccination.vaccine_id=tbl_vaccine.vaccine_id INNER JOIN tbl_vaccinator ON tbl_vaccination.vaccinator_id=tbl_vaccinator.vaccinator_id WHERE vaccination_status='Pending'";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
@@ -62,7 +61,7 @@ include("header.php");
     <div class="col-sm-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Previous Vaccinations</h4>
+                <h4 class="card-title">Vaccinations</h4>
                 <div class="table-responsive">
                     <table class="table user-table">
                         <thead>
@@ -73,15 +72,13 @@ include("header.php");
                                 <th class="border-top-0">Age Group</th>
                                 <th class="border-top-0">Vaccine</th>
                                 <th class="border-top-0">Vaccinator</th>
-                                <th class="border-top-0">Action</th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             include('../config.php');
-                            $user_id = $_SESSION['user_id'];
-                            $sql = "SELECT * FROM tbl_vaccination INNER JOIN tbl_member ON tbl_vaccination.member_id=tbl_member.member_id INNER JOIN tbl_user ON tbl_vaccination.user_id=tbl_user.user_id INNER JOIN tbl_vaccine ON tbl_vaccination.vaccine_id=tbl_vaccine.vaccine_id INNER JOIN tbl_vaccinator ON tbl_vaccination.vaccinator_id=tbl_vaccinator.vaccinator_id WHERE tbl_user.user_id='$user_id' AND vaccination_status='Vaccinated'";
+                            $sql = "SELECT * FROM tbl_vaccination INNER JOIN tbl_member ON tbl_vaccination.member_id=tbl_member.member_id INNER JOIN tbl_user ON tbl_vaccination.user_id=tbl_user.user_id INNER JOIN tbl_vaccine ON tbl_vaccination.vaccine_id=tbl_vaccine.vaccine_id INNER JOIN tbl_vaccinator ON tbl_vaccination.vaccinator_id=tbl_vaccinator.vaccinator_id WHERE vaccination_status='Vaccinated'";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
@@ -90,10 +87,7 @@ include("header.php");
                                     echo "<td>" . date("h:i A", strtotime($row['vaccinated_time'])) . "</td>";
                                     echo "<td>" . $row['vaccine_age'] . "</td>";
                                     echo "<td>" . $row['vaccine_name'] . "</td>";
-                                    echo "<td>" . $row['vaccinator_name'] . "</td>";
-                                    echo "<td>";
-                                    echo "<a href='certificate.php?vaccination_id=" . $row['vaccination_id'] . "'>Print Certificate</a>";
-                                    echo "</td></tr>";
+                                    echo "<td>" . $row['vaccinator_name'] . "</td></tr>";
                                 }
                             } else {
                                 echo "0 results";
