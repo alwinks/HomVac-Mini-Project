@@ -1,66 +1,112 @@
-<?php
-session_start();
-include('config.php');
-if (isset($_POST['user_login'])) {
-    $user_mobile = $_POST['user_mobile'];
-    $user_password = $_POST['user_password'];
-    $sql = "SELECT * FROM tbl_user WHERE user_mobile='$user_mobile' AND user_password='$user_password'";
-    $result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result) > 0) {
-        header("location: user/index.php");
-        $row = mysqli_fetch_assoc($result);
-        $_SESSION['user_id'] = $row['user_id'];
-        $_SESSION['user_name'] = $row['user_name'];
-        $_SESSION['place_id'] = $row['place_id'];
-        echo '<script>alert("Logged in successfully!");</script>';
-    } else {
-        echo '<script>alert("Incorrect username or password!");</script>';
-    }
-}
-include("header.php");
-?>
-<!-- Bread crumb and right sidebar toggle -->
-<div class="page-breadcrumb">
-    <div class="row align-items-center">
-        <div class="col-md-6 col-8 align-self-center">
-            <h3 class="page-title mb-0 p-0">Home</h3>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Home - HomVac</title>
+  <meta content="" name="description">
+
+  <meta content="" name="keywords">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets_index/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets_index/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets_index/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets_index/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets_index/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets_index/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets_index/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: FlexStart - v1.9.0
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.php" class="logo d-flex align-items-center">
+        <span>HomVac</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li class="dropdown"><a href="#"><span>Vaccinator</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="vaccinator_login.php">Login</a></li>
+              <li><a href="vaccinator_register.php">Register</a></li>
+            </ul>
+          </li>
+          <li><a class="getstarted scrollto" href="user_login.php">Login</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
     </div>
-</div>
-<!-- End Bread crumb and right sidebar toggle -->
-<!-- Container fluid  -->
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Login as User</h3>
-                    <p>Don't have an account? <a href="register.php">Register here</a>.</p>
-                    <form method="POST" action="<?php $_PHP_SELF ?>" class="form-horizontal form-material mx-2">
-                        <div class="form-group">
-                            <label class="col-md-12 mb-0">Mobile Number</label>
-                            <div class="col-md-12">
-                                <input required name="user_mobile" type="number" value="9876543210" maxlength="10" placeholder="Enter your mobile number" class="form-control ps-0 form-control-line">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-12 mb-0">Password</label>
-                            <div class="col-md-12">
-                                <input required name="user_password" value="1aA!1aA!" type="password" placeholder="Enter your password" class="form-control ps-0 form-control-line" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-12 d-flex">
-                                <button name="user_login" type="submit" class="btn btn-success mx-auto mx-md-0 text-white">Login</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+          <h1 data-aos="fade-up">Vaccinate at Home!</h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">HomVac is an appointment scheduling system to facilitate the residents with scheduling their home vaccination appointments. This system allows them to easily search nearby vaccinators and book vaccinations.</h2>
+          <div data-aos="fade-up" data-aos-delay="600">
+            <div class="text-center text-lg-start">
+              <a href="user_register.php" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                <span>Register Now</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
             </div>
+          </div>
         </div>
+        <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+          <img src="assets_index/img/istockphoto-655068990-1024x1024.jpg" class="img-fluid" alt="">
+        </div>
+      </div>
     </div>
-</div>
-<!-- End Container fluid  -->
-<?php
-include("footer.php");
-?>
+
+  </section><!-- End Hero -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        Mini Project by Alwin Sunny and Arunkumar M. R.
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets_index/vendor/purecounter/purecounter.js"></script>
+  <script src="assets_index/vendor/aos/aos.js"></script>
+  <script src="assets_index/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets_index/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets_index/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets_index/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets_index/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets_index/js/main.js"></script>
+
+</body>
+
+</html>

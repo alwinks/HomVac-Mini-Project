@@ -9,7 +9,7 @@ if (isset($_POST['user_register'])) {
   $user_password = $_POST['user_password'];
   $sql = "INSERT INTO tbl_user (place_id,user_name,user_house,user_landmark,user_mobile,user_password,user_status) VALUES ($place_id,'$user_name','$user_house','$user_landmark','$user_mobile','$user_password','Active')";
   if (mysqli_query($conn, $sql)) {
-    header("location: index.php");
+    header("location: login.php");
     echo "<script>alert('Registered successfully!');</script>";
   } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -33,7 +33,7 @@ include("header.php");
       <div class="card">
         <div class="card-body">
           <h3 class="card-title">Register as User</h3>
-          <p>Already have an account? <a href="index.php">Login here</a>.</p>
+          <p>Already have an account? <a href="user_login.php">Login here</a>.</p>
           <form class="form-horizontal form-material mx-2" onsubmit="return validate()" name="user_register" method="POST" action="<?php $_PHP_SELF ?>">
             <div class="form-group">
               <label class="col-md-12 mb-0">Name</label>

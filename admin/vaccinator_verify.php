@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!$_SESSION['admin_id']) {
-    header("Location: ../admin.php");
+    header("Location: ../admin_login.php");
 }
 include('../config.php');
 $vaccinator_id = $_GET['vaccinator_id'];

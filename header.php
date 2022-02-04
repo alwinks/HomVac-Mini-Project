@@ -28,7 +28,7 @@
 
 <body>
     <!-- Main wrapper - style you can find in pages.scss -->
-    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    <div id="main-wrapper">
         <!-- Topbar header - style you can find in pages.scss -->
         <header class="topbar" data-navbarbg="skin6">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
@@ -38,42 +38,10 @@
                         <h1>HomVac</h1>
                     </a>
                     <!-- End Logo -->
-                    <!-- toggle and nav items -->
-                    <a class="nav-toggler waves-effect waves-light text-white d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
                 <!-- End Logo -->
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                    <ul class="navbar-nav d-lg-none d-md-block ">
-                        <li class="nav-item">
-                            <a class="nav-toggler nav-link waves-effect waves-light text-white " href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-                        </li>
-                    </ul>
-                </div>
             </nav>
         </header>
         <!-- End Topbar header -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <aside class="left-sidebar" data-sidebarbg="skin6">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <!-- User Profile-->
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php" aria-expanded="false">
-                                <span class="hide-menu">Home</span></a>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="register.php" aria-expanded="false">
-                                <span class="hide-menu">Register</span></a>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="vaccinator_login.php" aria-expanded="false">
-                                <span class="hide-menu">Vaccinator Zone</span></a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-        </aside>
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- Page wrapper  -->
         <div class="page-wrapper">

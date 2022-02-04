@@ -38,10 +38,7 @@
                         <h1>HomVac</h1>
                     </a>
                     <!-- End Logo -->
-                    <!-- toggle and nav items -->
-                    <a class="nav-toggler waves-effect waves-light text-white d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
-                <!-- End Logo -->
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
                     <ul class="navbar-nav d-lg-none d-md-block ">
                         <li class="nav-item">
@@ -55,7 +52,9 @@
                     <ul class="navbar-nav">
                         <!-- User profile and search -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $_SESSION['admin_username']; ?></a>
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php echo $_SESSION['admin_username']; ?>
+                            </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>
