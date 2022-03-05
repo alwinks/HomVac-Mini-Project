@@ -52,7 +52,7 @@ include("header.php");
                                     echo "<td>" . $row['user_name'] . "<br>" . $row['user_house'] . "<br>" . $row['user_landmark'] . "<br>" . $row['place_name'] . "</td></tr>";
                                 }
                             } else {
-                                echo "0 results";
+                                echo "No previous vaccinations yet..";
                             }
                             mysqli_close($conn);
                             ?>

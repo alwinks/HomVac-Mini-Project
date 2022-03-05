@@ -70,8 +70,6 @@ if (!$_SESSION['user_id']) {
                 echo "<p style='margin: 20px;'>I certify that this immunization information was transferred from the above-named individual's medical records. </p>";
                 echo $row['vaccinator_name'];
             }
-        } else {
-            echo "0 results";
         }
         mysqli_close($conn);
         ?>

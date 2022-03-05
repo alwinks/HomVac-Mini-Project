@@ -5,13 +5,20 @@ if (isset($_POST['vaccinator_register'])) {
   $vaccinator_name = $_POST['vaccinator_name'];
   $vaccinator_mobile = $_POST['vaccinator_mobile'];
   $vaccinator_password = $_POST['vaccinator_password'];
-  $sql = "INSERT INTO tbl_vaccinator (place_id,vaccinator_name,vaccinator_mobile,vaccinator_password,vaccinator_status) VALUES ($place_id,'$vaccinator_name','$vaccinator_mobile','$vaccinator_password','Non-verified')";
-  if (mysqli_query($conn, $sql)) {
-    header("location: vaccinator_login.php");
-    echo "<script>alert('Registered successfully!');</script>";
-  } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  $sql1 = "SELECT * FROM tbl_vaccinator WHERE vaccinator_mobile='$vaccinator_mobile'";
+  $result1 = mysqli_query($conn, $sql1);
+  if (mysqli_num_rows($result1) == 0) {
+    $sql2 = "INSERT INTO tbl_vaccinator (place_id,vaccinator_name,vaccinator_mobile,vaccinator_password,vaccinator_status) VALUES ($place_id,'$vaccinator_name','$vaccinator_mobile','$vaccinator_password','Non-verified')";
+    if (mysqli_query($conn, $sql2)) {
+      header("location: vaccinator_login.php");
+      echo "<script>alert('Registered successfully!');</script>";
+    }
+    else {
+      echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+    }
   }
+  else
+    echo "<script>alert('Mobile number already exists!');</script>";
 }
 include("header.php");
 ?>
@@ -54,8 +61,6 @@ include("header.php");
                     while ($row = mysqli_fetch_assoc($result)) {
                       echo "<option value='" . $row['place_id'] . "'>" . $row['place_name'] . "</option>";
                     }
-                  } else {
-                    echo "0 results";
                   }
                   mysqli_close($conn);
                   ?>

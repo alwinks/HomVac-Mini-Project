@@ -85,7 +85,7 @@ include("header.php");
                                     echo "<tr><td>" . $row['place_name'] . "</td></tr>";
                                 }
                             } else {
-                                echo "0 results";
+                                echo "No places added yet..";
                             }
                             mysqli_close($conn);
                             ?>

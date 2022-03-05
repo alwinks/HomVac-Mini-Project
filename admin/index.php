@@ -133,7 +133,7 @@ include("header.php");
                                     echo "<td><p class='text-danger'>" . $row['pending'] . "</p></td></tr>";
                                 }
                             } else {
-                                echo "0 results";
+                                echo "No places booked vaccinations yet..";
                             }
                             mysqli_close($conn);
                             ?>

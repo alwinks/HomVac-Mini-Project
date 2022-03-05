@@ -128,7 +128,7 @@ include("header.php");
                                     echo "<td><img src='../assets/images/" . $row['member_proof_photo'] . "' height=250px></td></tr>";
                                 }
                             } else {
-                                echo "0 results";
+                                echo "No family members added yet..";
                             }
                             mysqli_close($conn);
                             ?>

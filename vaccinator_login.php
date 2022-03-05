@@ -7,12 +7,19 @@ if (isset($_POST['vaccinator_login'])) {
     $sql = "SELECT * FROM tbl_vaccinator WHERE vaccinator_mobile='$vaccinator_mobile' AND vaccinator_password='$vaccinator_password'";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
-        echo '<script>alert("Logged in successfully!");</script>';
-        header("location: vaccinator/index.php");
         $row = mysqli_fetch_assoc($result);
-        $_SESSION['vaccinator_id'] = $row['vaccinator_id'];
-        $_SESSION['vaccinator_name'] = $row['vaccinator_name'];
-    } else {
+        if($row['vaccinator_status']=="Non-verified")
+        {
+            header("location: non_verified.php");
+        }
+        else {
+            echo '<script>alert("Logged in successfully!");</script>';
+            header("location: vaccinator/index.php");
+            $_SESSION['vaccinator_id'] = $row['vaccinator_id'];
+            $_SESSION['vaccinator_name'] = $row['vaccinator_name'];
+        }
+    } 
+    else {
         echo '<script>alert("Incorrect username or password!");</script>';
     }
 }

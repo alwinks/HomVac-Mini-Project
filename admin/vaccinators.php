@@ -45,7 +45,7 @@ include("header.php");
                             <?php echo "</td></tr>";
                                 }
                             } else {
-                                echo "0 results";
+                                echo "No non-verified vaccinators yet..";
                             }
                             mysqli_close($conn);
                             ?>
@@ -80,7 +80,7 @@ include("header.php");
                                     echo "<td>" . $row['vaccinator_mobile'] . "</td></tr>";
                                 }
                             } else {
-                                echo "0 results";
+                                echo "No verified vaccinators yet..";
                             }
                             mysqli_close($conn);
                             ?>

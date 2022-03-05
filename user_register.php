@@ -7,13 +7,20 @@ if (isset($_POST['user_register'])) {
   $user_landmark = $_POST['user_landmark'];
   $user_mobile = $_POST['user_mobile'];
   $user_password = $_POST['user_password'];
-  $sql = "INSERT INTO tbl_user (place_id,user_name,user_house,user_landmark,user_mobile,user_password,user_status) VALUES ($place_id,'$user_name','$user_house','$user_landmark','$user_mobile','$user_password','Active')";
-  if (mysqli_query($conn, $sql)) {
-    header("location: login.php");
-    echo "<script>alert('Registered successfully!');</script>";
-  } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  $sql1 = "SELECT * FROM tbl_user WHERE user_mobile='$user_mobile'";
+  $result1 = mysqli_query($conn, $sql1);
+  if (mysqli_num_rows($result1) == 0) {
+    $sql2 = "INSERT INTO tbl_user (place_id,user_name,user_house,user_landmark,user_mobile,user_password,user_status) VALUES ($place_id,'$user_name','$user_house','$user_landmark','$user_mobile','$user_password','Active')";
+    if (mysqli_query($conn, $sql2)) {
+      header("location: user_login.php");
+      echo "<script>alert('Registered successfully!');</script>";
+    }
+    else {
+      echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+    }
   }
+  else
+    echo "<script>alert('Mobile number already exists!');</script>";
 }
 include("header.php");
 ?>

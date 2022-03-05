@@ -94,7 +94,7 @@ include("header.php");
                                     echo "<td>" . $row['vaccine_name'] . "</td></tr>";
                                 }
                             } else {
-                                echo "0 results";
+                                echo "No vaccines added yet..";
                             }
                             mysqli_close($conn);
                             ?>

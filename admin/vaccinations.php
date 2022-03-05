@@ -48,7 +48,7 @@ include("header.php");
                                     echo "<td>" . $row['vaccinator_name'] . "</td></tr>";
                                 }
                             } else {
-                                echo "0 results";
+                                echo "No pending vaccinations yet..";
                             }
                             mysqli_close($conn);
                             ?>
@@ -90,7 +90,7 @@ include("header.php");
                                     echo "<td>" . $row['vaccinator_name'] . "</td></tr>";
                                 }
                             } else {
-                                echo "0 results";
+                                echo "No vaccinations yet..";
                             }
                             mysqli_close($conn);
                             ?>

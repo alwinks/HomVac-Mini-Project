@@ -56,7 +56,7 @@ include("header.php");
                             <?php echo "</td></tr>";
                                 }
                             } else {
-                                echo "0 results";
+                                echo "No pending vaccinations yet..";
                             }
                             mysqli_close($conn);
                             ?>
