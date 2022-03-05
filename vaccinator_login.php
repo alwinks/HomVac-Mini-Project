@@ -8,18 +8,15 @@ if (isset($_POST['vaccinator_login'])) {
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
-        if($row['vaccinator_status']=="Non-verified")
-        {
+        if ($row['vaccinator_status'] == "Non-verified") {
             header("location: non_verified.php");
-        }
-        else {
+        } else {
             echo '<script>alert("Logged in successfully!");</script>';
             header("location: vaccinator/index.php");
             $_SESSION['vaccinator_id'] = $row['vaccinator_id'];
             $_SESSION['vaccinator_name'] = $row['vaccinator_name'];
         }
-    } 
-    else {
+    } else {
         echo '<script>alert("Incorrect username or password!");</script>';
     }
 }

@@ -14,12 +14,10 @@ if (isset($_POST['user_register'])) {
     if (mysqli_query($conn, $sql2)) {
       header("location: user_login.php");
       echo "<script>alert('Registered successfully!');</script>";
-    }
-    else {
+    } else {
       echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
     }
-  }
-  else
+  } else
     echo "<script>alert('Mobile number already exists!');</script>";
 }
 include("header.php");
