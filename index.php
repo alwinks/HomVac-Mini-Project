@@ -88,7 +88,7 @@
   <footer id="footer" class="footer">
     <div class="container">
       <div class="copyright">
-        Mini Project by Alwin Sunny and Arunkumar M. R.
+        © Alwin Sunny & Arunkumar M. R. 2021
       </div>
     </div>
   </footer><!-- End Footer -->

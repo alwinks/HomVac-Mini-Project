@@ -1,5 +1,5 @@
 <!-- footer -->
-<footer class="footer"> Mini Project by Alwin Sunny and Arunkumar M. R.
+<footer class="footer"> © Alwin Sunny & Arunkumar M. R. 2021
 </footer>
 <!-- End footer -->
 </div>
